@@ -21,6 +21,10 @@ class LoginHandler(Handler):
         LoginPersonalAccessTokenHandler().get_root_widget().show_all()
 
     def on_login_with_oauth2(self, btn):
+        # The Reason why we "shutdown" this flown is that we don't a
+        # good idea on how to "pack" the necessary credentials (tokens
+        # and secrets) to be installed through pip
+        #
         # self.get_root_widget().hide()  # TODO Move to a decorator?
         # LoginOAuth2Handler().get_root_widget().show_all()
         pass
