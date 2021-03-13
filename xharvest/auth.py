@@ -45,8 +45,8 @@ class AuthenticationManager(object):
 
     def get_access_token_authorization_url(self):
         return "{}/{}?client_id={}&response_type=token".format(
-                "oauth2/authorize",
                 self.domain,
+                "oauth2/authorize",
                 self.get_secret("client_id"),
             )
 
