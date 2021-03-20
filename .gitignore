@@ -120,3 +120,4 @@ extra/
 flatpak/build-dir/
 flatpak/pypi/
 flatpak/.flatpak-builder/
+stage/
