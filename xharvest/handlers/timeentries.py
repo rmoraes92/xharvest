@@ -37,9 +37,11 @@ class TimeEntriesHandler(Handler):
         self.time_entries.emit("time_entries_were_rendered")
 
     def on_time_entries_were_rendered(self, gobj):
-        if self.source_remove_id:
-            GLib.source_remove(self.source_remove_id)
-            self.source_remove_id = None
+        # Since "refresh_time_entries" returns None
+        # this will be a "only-once" call all the time
+        #if self.source_remove_id:
+        #    GLib.source_remove(self.source_remove_id)
+        #    self.source_remove_id = None
         if self.is_user_authenticated():
             self.source_remove_id = GLib.timeout_add_seconds(
                 self.PULLING_DELAY,
