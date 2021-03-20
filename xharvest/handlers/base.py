@@ -35,6 +35,9 @@ class Handler(object):
         # self.builder.get_object(self.root_widget).show_all()
         # self.get_root_widget().show_all()
 
+    def get_harvest_api_credential(self):
+        return AuthenticationManager().get_credential()
+
     def is_user_authenticated(self):
         return AuthenticationManager().is_user_authenticated()
 

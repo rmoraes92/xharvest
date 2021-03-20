@@ -106,7 +106,7 @@ class TimeEntryHandler(Handler):
 
     def start_chronometer(self):
         endpoint = TimeEntryRestartEndpoint(
-            self.oauth2.get_credential(), time_entry_id=self.time_entry_id
+            self.get_harvest_api_credential(), time_entry_id=self.time_entry_id
         )
         resp = endpoint.patch()
         if resp.status_code == 200:
@@ -114,7 +114,7 @@ class TimeEntryHandler(Handler):
 
     def stop_chronometer(self):
         endpoint = TimeEntryStopEndpoint(
-            self.oauth2.get_credential(), time_entry_id=self.time_entry_id
+            self.get_harvest_api_credential(), time_entry_id=self.time_entry_id
         )
         resp = endpoint.patch()
         if resp.status_code == 200:
