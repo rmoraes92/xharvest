@@ -12,7 +12,7 @@ class TimeEntriesHandler(Handler):
     template = "time_entries"
     root_widget = "lbox_timeentries"
 
-    PULLING_DELAY = 60 * 2
+    PULLING_DELAY = 60 * 1
 
     def bind_data(self):
         self.source_remove_id = None
