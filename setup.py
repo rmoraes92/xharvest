@@ -39,7 +39,9 @@ setup(
     install_requires=[
         'pycairo==1.19.1',
         'PyGObject==3.34.0',
+        'jeepney==0.4.3',
         'keyring==21.2.0',
+        'keyring_jeepney==0.2',  # TODO should this be enforce here?
         'harvest-api==0.3.0',
     ],
     packages=find_packages(),
