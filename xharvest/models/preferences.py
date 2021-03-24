@@ -41,6 +41,7 @@ class Preferences(GObject.GObject):
             # TODO let's try move it out to the setup flow
             os.makedirs(os.path.dirname(CONFIG_PATH), exist_ok=True)
             self.save_config({
+                "timeentries_refresh_interval": 2,
                 "tray_icon": False,
                 "shortcuts": {
                     Shortcuts.SHOW_TIME_ENTRY_FORM: {
@@ -57,7 +58,21 @@ class Preferences(GObject.GObject):
                     },
                 },
             })
-        return json.load(open(CONFIG_PATH, 'r'))
+
+        ret = json.load(open(CONFIG_PATH, 'r'))
+
+        # --( Migrations )-----------------------------------------------------
+        #
+        # -> v0.7.1
+        if "timeentries_refresh_interval" not in ret.keys():
+            ret["timeentries_refresh_interval"] = 2
+            self.save_config(ret)
+
+        return ret
+
+    @config_changes
+    def update_timeentries_refresh_interval(self, cfg, interval):
+        cfg['timeentries_refresh_interval'] = int(interval)
 
     @config_changes
     def update_shortcut_config(self, cfg, name, mod_key, key):
@@ -66,6 +81,9 @@ class Preferences(GObject.GObject):
     @config_changes
     def update_minimize_to_tray_icon(self, cfg, val):
         cfg['tray_icon'] = val
+
+    def get_timeentries_refresh_interval(self):
+        return self.get_config()['timeentries_refresh_interval']
 
     def get_minimize_to_tray_icon(self):
         return self.get_config()['tray_icon']

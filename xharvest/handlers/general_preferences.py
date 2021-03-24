@@ -10,5 +10,9 @@ class GeneralPreferencesHandler(Handler):
                 self.preferences.get_minimize_to_tray_icon(),
                 )
 
+    def on_spin_timeentriesrefreshinterval_value_changed(self, spin_btn):
+        interval = spin_btn.get_value_as_int()
+        self.preferences.update_timeentries_refresh_interval(interval)
+
     def on_close_to_notification(self, cbtn):
         self.preferences.update_minimize_to_tray_icon(cbtn.get_active())

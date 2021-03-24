@@ -12,7 +12,8 @@ class TimeEntriesHandler(Handler):
     template = "time_entries"
     root_widget = "lbox_timeentries"
 
-    PULLING_DELAY = 60 * 1
+    def get_refresh_delay(self):
+        return self.preferences.get_timeentries_refresh_interval()
 
     def bind_data(self):
         self.source_remove_id = None
@@ -44,7 +45,7 @@ class TimeEntriesHandler(Handler):
         #     self.source_remove_id = None
         if self.is_user_authenticated():
             self.source_remove_id = GLib.timeout_add_seconds(
-                self.PULLING_DELAY,
+                self.get_refresh_delay(),
                 self.refresh_time_entries,
                 )
 
