@@ -25,20 +25,20 @@ Unofficial Harvest desktop app for Linux
 ### Source
 
 ```
-git clone https://github.com/velvetkeyboard/py-xharvest && \
+git clone https://github.com/rmoraes92/py-xharvest && \
     cd py-xharvest/ && \
     pip install --user .
 ```
 
 ### Flatpak (not yet working)
 
-- `flatpak install org.velvetkeyboard.xHarvest`
+- `flatpak install org.rmoraes92.xHarvest`
 
 ## License
 
 MIT License
 
-Copyright (c) 2020 Ramon Moraes
+Copyright (c) 2020 Ramon Moraes <ramonmoraes.foss@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
